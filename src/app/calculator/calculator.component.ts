@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WriteLogService } from '../write-log.service';
 
 @Component({
   selector: 'app-calculator',
@@ -29,13 +30,13 @@ export class CalculatorComponent implements OnInit {
       answer = answer.substr(0, answer.length-1);
     }
 
-    console.log('Formula = ' + answer);
+    this.logging.writeLog('Formula = ' + answer);
 
     this.currentEntry = eval(answer);
   }
 
   clearAll() {
-    console.log('All Clear!');
+    this.logging.writeLog('Clear all succeeded.');
 
     this.input = '';
     this.currentEntry = '0';
@@ -69,7 +70,7 @@ export class CalculatorComponent implements OnInit {
 
     if (num == ".") {
       if (this.hasDecimal == true) {
-        console.log('This number already has a decimal');
+        this.logging.writeError('This number already has a decimal.');
         return;
       } else {
         this.hasDecimal = true;
@@ -93,7 +94,7 @@ export class CalculatorComponent implements OnInit {
 
     if (this.input != '') {
       if ((operand == "/") && (this.currentEntry == "0")) {
-        console.log('Cannot divide by 0');
+        this.logging.writeError('Cannot divide by 0.');
         return;
       }
     }
@@ -103,7 +104,6 @@ export class CalculatorComponent implements OnInit {
       this.clearNext = false;
     }
 
-    console.log('Operator: ' + operand);
     this.hasDecimal = false;
 
     if(this.operandPressedLast == true) {
@@ -117,13 +117,12 @@ export class CalculatorComponent implements OnInit {
   }
 
     onClickCalculate() {
-    console.log('Calculate');
     this.trimDecimal();
     this.hasDecimal = false;
 
     if (this.input != '') {
       if ((this.input[this.input.length-1] == "/") && (this.currentEntry == "0")) {
-        console.log('Cannot divide by 0');
+        this.logging.writeError('Cannot divide by 0.');
         return;
       }
     }
@@ -138,7 +137,7 @@ export class CalculatorComponent implements OnInit {
       if (this.input.length > 0) {
         this.prevOperation = this.input[this.input.length - 1] + this.currentEntry;
       }
-      console.log('Prev Operation: ' + this.prevOperation);
+      this.logging.writeLog('Previous Operation: ' + this.prevOperation);
       this.input = this.input + this.currentEntry;
     }
 
@@ -147,7 +146,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   onClickClearEntry() {
-    console.log('Clear Entry!');
+    this.logging.writeLog('Entry cleared successfully');
     this.hasDecimal = false;
 
     this.currentEntry = '0';
@@ -157,7 +156,10 @@ export class CalculatorComponent implements OnInit {
     this.clearAll();
   }
 
-  constructor() { }
+  constructor(
+    private logging: WriteLogService
+  ) {
+  }
 
   ngOnInit(): void {
   }

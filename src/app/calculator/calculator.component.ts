@@ -92,7 +92,7 @@ export class CalculatorComponent implements OnInit {
       return;
     }
 
-    if (this.input != '') {
+    if (this.input.length > 0) {
       if ((operand == "/") && (this.currentEntry == "0")) {
         this.logging.writeError('Cannot divide by 0.');
         return;

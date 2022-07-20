@@ -21,8 +21,18 @@
     text-align: right;
     background-color: #EEE;
 
+    overflow-x: auto;    
+    overflow-y: hidden;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
     border-radius: 3px;
     border: 2px solid #042002;
+}
+
+.calcText::-webkit-scrollbar {
+    display: none;
 }
 
 button {

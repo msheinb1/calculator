@@ -1,0 +1,28 @@
+.container {
+    position: relative;
+    height: 600px;
+    width: auto;
+}
+
+button {
+    position: absolute;
+    left: 25%;
+
+    margin: 0px auto;
+
+    height: 33%;
+    width: 50%;
+    background-color: skyblue;
+    font-size: 2.5em;
+
+    border-radius: 1em;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:active {
+    background-color: blue;
+}

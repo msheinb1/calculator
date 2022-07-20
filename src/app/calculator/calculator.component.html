@@ -1,0 +1,34 @@
+<div class= "body">
+    <div class="calcText">{{input}}</div>
+    <div class="calcText">{{currentEntry}}</div>
+
+    <button (click)="onClickNumber('7')">7</button>
+    <button (click)="onClickNumber('8')">8</button>
+    <button (click)="onClickNumber('9')">9</button>
+    <button (click)="onClickOperator('/')">÷</button><br>
+
+    <button (click)="onClickNumber('4')">4</button>
+    <button (click)="onClickNumber('5')">5</button>
+    <button (click)="onClickNumber('6')">6</button>
+    <button (click)="onClickOperator('*')">×</button><br>
+
+    <button (click)="onClickNumber('1')">1</button>
+    <button (click)="onClickNumber('2')">2</button>
+    <button (click)="onClickNumber('3')">3</button>
+    <button (click)="onClickOperator('-')">-</button><br>
+
+    <button (click)="onClickOperator('neg')">neg</button>
+    <button (click)="onClickNumber('0')">0</button>
+    <button (click)="onClickNumber('.')">.</button>
+    <button (click)="onClickOperator('+')">+</button><br>
+
+    <button (click)="onClickClearAll()">C</button>
+    <button (click)="onClickClearEntry()">CE</button>
+    <button (click)="onClickOperator('%')">%</button>
+    <button (click)="onClickCalculate()">=</button>
+</div>
+
+<p> * neg = Negate the current entry<br>
+    * Pressing the = button appends whatever is currently in the bottom field to the input in the top field.
+    I was inspired by the Windows calculator application, so a lot of the functionality is similar to it.<br>
+</p>
